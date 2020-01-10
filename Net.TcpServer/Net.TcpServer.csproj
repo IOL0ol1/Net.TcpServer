@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>A single-file event asynchronous(APM) tcp server</Description>
   </PropertyGroup>
 
 </Project>
