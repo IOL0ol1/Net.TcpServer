@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29609.76
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Net.TcpServer", "Net.TcpServer\Net.TcpServer.csproj", "{F73D4FFF-242D-4B9C-B395-1EF2E0CF8DDA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoServer", "ConsoleApp1\EchoServer.csproj", "{31D64C43-96F4-4678-8FE1-2AA17C10E773}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EchoServer", "EchoServer\EchoServer.csproj", "{31D64C43-96F4-4678-8FE1-2AA17C10E773}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientAdapter", "ClientAdapter\ClientAdapter.csproj", "{9A2C2BF4-8BCC-40EB-8B6A-FB3B17F72E00}"
 EndProject
