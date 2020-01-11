@@ -3,7 +3,21 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>A single-file event asynchronous(APM) tcp server</Description>
+    <Description>A single-file event asynchronous(APM) tcp server and tcp client adapter</Description>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>ico.png</PackageIcon>
+    <PackageIconUrl />
+    <RepositoryUrl>https://github.com/IOL0ol1/Net.TcpServer</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <PackageReleaseNotes>A single-file event asynchronous(APM) tcp server and tcp client adapter</PackageReleaseNotes>
+    <Copyright>MIT</Copyright>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\ico.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
