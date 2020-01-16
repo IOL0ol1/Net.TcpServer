@@ -8,9 +8,12 @@ namespace EchoServer
 {
     class Program
     {
+        /// <summary>
+        /// a echo server
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
-            // a echo server
             TcpServer tcpServer = new TcpServer(IPAddress.Any, TcpServer.GetFreePort());
             tcpServer.Start(_ =>
             {
@@ -20,7 +23,7 @@ namespace EchoServer
                 };
                 _.OnReceive = (client, data) =>
                 {
-                    Console.WriteLine($"OnReceive: {client} {Encoding.UTF8.GetString(data)}");
+                    Console.WriteLine($"OnReceive(Hex): {client} {BitConverter.ToString(data)}");
                     client.Send(data, endPoint => Console.WriteLine($"Send: {endPoint} complated"));
                 };
                 _.OnError = (client, ex) =>
@@ -29,11 +32,13 @@ namespace EchoServer
                 };
                 _.OnClose = (client, isCloseByClient) =>
                 {
-                    Console.WriteLine($"OnClose: {client} {(isCloseByClient ? "by client" : "by server")}");
+                    Console.WriteLine($"OnClose: {client} close {(isCloseByClient ? "by client" : "by server")}");
                 };
             });
-            Console.WriteLine($"Server {tcpServer} is start!");
+            Console.WriteLine($"Echo server {tcpServer} is start!");
+            Console.WriteLine($"Press any key to exit");
             Console.ReadKey();
+            tcpServer.Stop();
         }
     }
 }
