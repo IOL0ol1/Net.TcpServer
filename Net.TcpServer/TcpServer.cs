@@ -27,25 +27,25 @@ namespace Net.TcpServer
         /// Initializes a new instance of the <see cref="TcpServer"/> class with the
         /// specified local endpoint.
         /// </summary>
-        /// <param name="localEP">An <see cref="IPEndPoint"/> that represents the local endpoint to which to bind
+        /// <param name="localEndPoint">An <see cref="IPEndPoint"/> that represents the local endpoint to which to bind
         /// the listener.</param>
         /// <exception cref="ArgumentNullException">localEP is null.</exception>
-        public TcpServer(IPEndPoint localEP)
+        public TcpServer(IPEndPoint localEndPoint)
         {
             IsRunning = false;
-            server = new TcpListener(localEP);
+            server = new TcpListener(localEndPoint);
         }
 
         /// <summary>
         /// Initializes a new instance of the<see cref="TcpServer"/> class that listens
         /// for incoming connection attempts on the specified local IP address and port number.
         /// </summary>
-        /// <param name="localaddr">An <see cref="IPAddress"/> that represents the local IP address.</param>
+        /// <param name="address">An <see cref="IPAddress"/> that represents the local IP address.</param>
         /// <param name="port">The port on which to listen for incoming connection attempts.</param>
         /// <exception cref="ArgumentNullException">localaddr is null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">port is not between <see cref="IPEndPoint.MinPort"/> 
         /// and <see cref="IPEndPoint.MaxPort"/>.</exception>
-        public TcpServer(IPAddress localaddr, int port) : this(new IPEndPoint(localaddr, port))
+        public TcpServer(IPAddress address, int port) : this(new IPEndPoint(address, port))
         {
         }
 
@@ -53,7 +53,7 @@ namespace Net.TcpServer
         /// Initializes a new instance of the<see cref="TcpServer"/> class that listens
         /// for incoming connection attempts on the specified local IP address and port number.
         /// </summary>
-        /// <param name="localaddr">An <see cref="IPAddress"/> that represents the local IP address.</param>
+        /// <param name="address">An <see cref="IPAddress"/> that represents the local IP address.</param>
         /// <param name="port">The port on which to listen for incoming connection attempts.</param>
         /// <exception cref="ArgumentNullException">address is null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">port is not between <see cref="IPEndPoint.MinPort"/> 
@@ -437,6 +437,10 @@ namespace Net.TcpServer
         #region IDisposable Support
         private bool disposedValue = false;
 
+        /// <summary>
+        /// Dispose
+        /// </summary>
+        /// <param name="disposing"></param>
         protected virtual void Dispose(bool disposing)
         {
             if (!disposedValue)
@@ -450,6 +454,9 @@ namespace Net.TcpServer
             }
         }
 
+        /// <summary>
+        /// Dispose
+        /// </summary>
         public void Dispose()
         {
             Dispose(true);
