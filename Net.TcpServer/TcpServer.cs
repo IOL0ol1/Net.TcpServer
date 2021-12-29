@@ -172,13 +172,13 @@ namespace Net.TcpServer
         /// Get active tcp IPEndPoint.
         /// </summary>
         /// <returns>A array of active tcp IPEndPoint.</returns>
-        public static IReadOnlyList<IPEndPoint> GetActiveTcpPorts()
+        public static IEnumerable<IPEndPoint> GetActiveTcpPorts()
         {
-            List<IPEndPoint> localEP = new List<IPEndPoint>();
+            List<IPEndPoint> localEndPoints = new List<IPEndPoint>();
             IPGlobalProperties ipGlobalProperties = IPGlobalProperties.GetIPGlobalProperties();
-            localEP.AddRange(ipGlobalProperties.GetActiveTcpListeners());
-            localEP.AddRange(ipGlobalProperties.GetActiveTcpConnections().Select(item => item.LocalEndPoint));
-            return localEP.Distinct().ToList();
+            localEndPoints.AddRange(ipGlobalProperties.GetActiveTcpListeners());
+            localEndPoints.AddRange(ipGlobalProperties.GetActiveTcpConnections().Select(item => item.LocalEndPoint));
+            return localEndPoints.Distinct();
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace Net.TcpServer
         /// </summary>
         /// <param name="endPoint">source</param>
         /// <returns>deep copy object</returns>
-        private EndPoint CopyEndPoint(EndPoint endPoint)
+        private static EndPoint CopyEndPoint(EndPoint endPoint)
         {
             return endPoint.Create(endPoint.Serialize());
         }
@@ -453,6 +453,7 @@ namespace Net.TcpServer
         public void Dispose()
         {
             Dispose(true);
+            GC.SuppressFinalize(this);
         }
         #endregion
 
