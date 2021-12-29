@@ -3,7 +3,33 @@
   <PropertyGroup>
     <TargetFrameworks>net35;net4;net45;net46;netstandard2.0;netstandard2.1;net5;net6</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>A single-file event asynchronous(APM) tcp server and tcp client adapter</Description>
+    <Description>
+        A single-file event asynchronous(APM) tcp server and tcp client adapter for tcp debug assistant
+        // A echo server
+        TcpServer tcpServer = new TcpServer(IPAddress.Any, TcpServer.GetFreePort());
+        tcpServer.Start(_ =>
+        {
+            _.OnAccept = client =>
+            {
+                Console.WriteLine($"OnAccept: {client}");
+            };
+            _.OnReceive = (client, data) =>
+            {
+                Console.WriteLine($"OnReceive: {client} {Encoding.UTF8.GetString(data)}");
+                client.Send(data, endPoint => Console.WriteLine($"Send: {endPoint} complated"));
+            };
+            _.OnError = (client, ex) =>
+            {
+                Console.WriteLine($"OnError: {client} {ex.Message}");
+            };
+            _.OnClose = (client, isCloseByClient) =>
+            {
+                Console.WriteLine($"OnClose: {client} {(isCloseByClient ? "by client" : "by server")}");
+            };
+        });
+        Console.ReadKey();
+        tcpServer.Stop();
+    </Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>ico.png</PackageIcon>
     <PackageIconUrl />
@@ -11,8 +37,9 @@
     <PackageProjectUrl>https://github.com/IOL0ol1/Net.TcpServer</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>A single-file event asynchronous(APM) tcp server and tcp client adapter</PackageReleaseNotes>
+    <PackageTags>tcp server tcpserver tcpclient tcplistener listener tcpassistant</PackageTags>
     <Copyright>MIT</Copyright>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
