@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net35;net4;net45;net46;netstandard2.0;netstandard2.1;net5;net6</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Description>
         A single-file event asynchronous(APM) tcp server and tcp client adapter for tcp debug assistant
         // A echo server
@@ -39,7 +40,7 @@
     <PackageReleaseNotes>A single-file event asynchronous(APM) tcp server and tcp client adapter</PackageReleaseNotes>
     <PackageTags>tcp server tcpserver tcpclient tcplistener listener tcpassistant</PackageTags>
     <Copyright>MIT</Copyright>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <ItemGroup>

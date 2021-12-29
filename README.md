@@ -7,7 +7,7 @@ A single-file event asynchronous(APM) tcp server and tcp client adapter for tcp 
 
 # Quick start
 ```ps
-Install-Package Net.TcpServer -Version 1.0.0
+Install-Package Net.TcpServer -Version 1.0.3
 ```
 ```csharp
 using Net.TcpServer;
